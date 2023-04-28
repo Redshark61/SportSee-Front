@@ -6,7 +6,7 @@ export default function Root() {
 	return (
 		<>
 			<Nav/>
-			<div className={"flex"}>
+			<div className={"flex w-full"}>
 				<SideBar/>
 				<Outlet/>
 			</div>

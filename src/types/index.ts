@@ -14,7 +14,7 @@ export interface UserMainData {
   };
 }
 
-interface UserActivity {
+export interface UserActivity {
   userId: number;
   sessions: {
     day: string;
@@ -23,7 +23,7 @@ interface UserActivity {
   }[];
 }
 
-interface UserAverageSessions {
+export interface UserAverageSessions {
     userId: number;
     sessions: {
         day: number;
@@ -31,7 +31,7 @@ interface UserAverageSessions {
     }[];
 }
 
-interface UserPerformanceData {
+export interface UserPerformanceData {
   userId: number;
   kind: {
     [key: number]: string;
