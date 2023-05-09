@@ -6,12 +6,14 @@ export interface UserMainData {
     age: number;
   };
   todayScore: number;
-  keyData: {
+  keyData: KeyData
+}
+
+export interface KeyData  {
     calorieCount: number;
     proteinCount: number;
     carbohydrateCount: number;
     lipidCount: number;
-  };
 }
 
 export interface UserActivity {
