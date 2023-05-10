@@ -1,45 +1,17 @@
-import {
-	Bar,
-	BarChart,
-	CartesianGrid,
-	Legend,
-	ResponsiveContainer,
-	Tooltip,
-	XAxis,
-	YAxis,
-} from "recharts";
-import { TooltipProps } from "recharts";
-import { ValueType, NameType } from "recharts/types/component/DefaultTooltipContent";
-import { useEffect, useState } from "react";
-import { UserActivity } from "../../types";
-import { useFetchActivities } from "../../hooks";
-import { BLACK, RED } from "../../constants";
-import { CheckActivityData } from "../../utils";
-
-const CustomTooltip = ({ payload, label, active }: TooltipProps<ValueType, NameType>) => {
-	if (active && payload && payload.length) {
-		console.log(payload);
-		return (
-			<div style={{ background: RED }} className={"flex flex-col px-[11px] py-[4px]"}>
-				<span className={"text-[7px] text-white"}>{payload[0].value}kg</span>
-				<span className={"text-[7px] text-white"}>{payload[1].value}kCal</span>
-			</div>
-		);
-	}
-	return null;
-};
+import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis,} from "recharts";
+import {UserActivity} from "../../types";
+import {useFetchData} from "../../hooks";
+import {BLACK, RED} from "../../constants";
+import {CustomTooltip} from "./CustomTooltip";
 
 export default function Activities() {
-	const [data, setData] = useState<UserActivity | undefined>(undefined);
+	const {data, loading, error} = useFetchData<UserActivity>({id: 2, type: "activities"});
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const data = await useFetchActivities(2);
-			const formattedData = new CheckActivityData(data);
-			setData(formattedData);
-		};
-		fetchData();
-	}, []);
+	if (loading) return (<div>Loading...</div>);
+	if (error) {
+		console.error(error);
+		return (<div>Error</div>);
+	}
 
 	return (
 		<div className={"bg-gray-50 rounded-md"}>

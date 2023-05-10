@@ -1,16 +1,4 @@
-import {UserActivity} from "../types";
-
-export const useFetchActivities = async (id: number): Promise<UserActivity> => {
-	const isDebug = import.meta.env.VITE_DEBUG;
-
-	if (isDebug) {
-		return await useFetchMockActivity(id);
-	} else {
-		return await useFetchDBActivity(id);
-	}
-}
-
-const useFetchMockActivity = async (id: number) => {
+export const fetchMockActivity = async (id: number) => {
 	const userActivities = {
 		userId: 1,
 		sessions: [
@@ -74,7 +62,7 @@ const useFetchMockActivity = async (id: number) => {
 	return userActivities;
 }
 
-const useFetchDBActivity = async (id: number) => {
+export const fetchDBActivity = async (id: number) => {
 	const response = await fetch(`http://localhost:3000/user/${id}`);
 	return await response.json();
 }

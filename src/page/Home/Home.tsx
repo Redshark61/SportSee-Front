@@ -1,23 +1,17 @@
-import {usefetchUser} from "../../hooks";
-import {useEffect, useState} from "react";
-import {UserMainData} from "../../types";
+import {useFetchData} from "../../hooks";
 import {CheckUserData} from "../../utils";
 import Activities from "../../components/Activities";
 import {KeyDatas} from "../../components/KeyDatas";
+import {MedianSessions} from "../../components/MedianSessions";
 
 export default function Home() {
-	const [data, setData] = useState<CheckUserData | undefined>(undefined);
+	const {data, loading, error} = useFetchData<CheckUserData>({id: 2, type: "user"});
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const data = await usefetchUser(2);
-			const formattedData = new CheckUserData(data);
-			setData(formattedData);
-		};
-		fetchData();
-	}, []);
-
-	if (!data) return (<div>Loading...</div>);
+	if (loading) return (<div>Loading...</div>);
+	if (error) {
+		console.error(error);
+		return (<div>Error</div>);
+	}
 
 
 	return (
@@ -33,7 +27,7 @@ export default function Home() {
 					<KeyDatas data={data.keyData}/>
 				</div>
 				<div className={"grid grid-cols-3 gap-4"}>
-					<div className={"border-2"}>6</div>
+					<MedianSessions/>
 					<div className={"border-2"}>7</div>
 					<div className={"border-2"}>8</div>
 				</div>

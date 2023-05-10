@@ -1,16 +1,4 @@
-import {UserMainData} from "../types";
-
-export const usefetchUser = async (id: number) : Promise<UserMainData> => {
-	const isDebug = import.meta.env.VITE_DEBUG;
-
-	if (isDebug){
-		return await useFetchMockUser(id);
-	} else {
-		return await useFetchDBUser(id);
-	}
-}
-
-const useFetchMockUser = async (id: number) => {
+export const fetchMockUser = async (id: number) => {
 	const user = {
 	  id: id,
 	  userInfos: {
@@ -33,7 +21,7 @@ const useFetchMockUser = async (id: number) => {
 	return user;
 }
 
-const useFetchDBUser = async (id: number) => {
+export const fetchDBUser = async (id: number) => {
 	const response = await fetch(`http://localhost:3000/user/${id}`);
 	return await response.json();
 }
