@@ -2,6 +2,7 @@ import {fetchDBAverageSessions, fetchMockAverageSessions} from "./averageSession
 import {fetchDBActivity, fetchMockActivity} from "./activities";
 import {fetchDBUser, fetchMockUser} from "./user";
 import {useEffect, useState} from "react";
+import {CheckActivityData, CheckAverageSessionData, CheckUserData} from "../utils";
 
 interface ParamsType {
 	id: number;
@@ -16,19 +17,23 @@ export function useFetchData<T>({id, type}: ParamsType) {
 
 	let mock: any;
 	let db: any;
+	let Formatter: any;
 
 	switch (type) {
 		case "average-sessions":
 			mock = fetchMockAverageSessions;
 			db = fetchDBAverageSessions;
+			Formatter = CheckAverageSessionData;
 			break;
 		case "activities":
 			mock = fetchMockActivity;
 			db = fetchDBActivity
+			Formatter = CheckActivityData;
 			break;
 		case "user":
 			mock = fetchMockUser;
 			db = fetchDBUser;
+			Formatter = CheckUserData;
 			break;
 	}
 
@@ -42,7 +47,7 @@ export function useFetchData<T>({id, type}: ParamsType) {
 				} else {
 					fetchedData = await db(id);
 				}
-			setData(fetchedData);
+			setData(new Formatter(fetchedData));
 			} catch (error) {
 				setError(error);
 			} finally {
