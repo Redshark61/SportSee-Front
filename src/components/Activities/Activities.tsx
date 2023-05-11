@@ -21,8 +21,8 @@ export default function Activities() {
 					margin={{ top: 64, right: 30, left: 20, bottom: 5 }}
 				>
 					<CartesianGrid strokeDasharray="4" vertical={false} />
-					<XAxis dataKey="date" color={"#9B9EAC"} fontSize={14} />
-					<YAxis orientation={"right"} color={"#9B9EAC"} fontSize={14} />
+					<XAxis dataKey="date" fontSize={14} />
+					<YAxis orientation={"right"} fontSize={14} />
 					<Tooltip content={<CustomTooltip />} />
 					<Legend
 						layout={"horizontal"}
