@@ -5,7 +5,7 @@ import {BLACK, RED} from "../../constants";
 import {CustomTooltip} from "./CustomTooltip";
 
 export default function Activities() {
-	const {data, loading, error} = useFetchData<UserActivity>({id: 2, type: "activities"});
+	const {data, loading, error} = useFetchData<UserActivity>({type: "activities", url: "/user/1/activity"});
 
 	if (loading) return (<div>Loading...</div>);
 	if (error) {

@@ -4,7 +4,7 @@ import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} fro
 import {CustomTooltip} from "./CustomTooltip";
 
 export default function MedianSessions() {
-	const {data, loading, error} = useFetchData<UserAverageSessions>({id: 2, type: "average-sessions"});
+	const {data, loading, error} = useFetchData<UserAverageSessions>({type: "average-sessions", url:"/average-sessions"});
 
 	if (loading) return (<div>Loading...</div>);
 	if (error) {

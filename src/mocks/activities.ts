@@ -1,6 +1,5 @@
-export const fetchMockActivity = async (id: number) => {
-	const userActivities = {
-		userId: 1,
+export const userActivities = {
+		userId: -1,
 		sessions: [
 			{
 				day: "2023-04-27",
@@ -54,15 +53,3 @@ export const fetchMockActivity = async (id: number) => {
 			}
 		]
 	};
-
-
-	// make a false delay to simulate a real fetch
-	await new Promise(resolve => setTimeout(resolve, 1000));
-
-	return userActivities;
-}
-
-export const fetchDBActivity = async (id: number) => {
-	const response = await fetch(`http://localhost:3000/user/${id}`);
-	return await response.json();
-}

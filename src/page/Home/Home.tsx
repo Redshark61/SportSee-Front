@@ -5,7 +5,7 @@ import {KeyDatas} from "../../components/KeyDatas";
 import {MedianSessions} from "../../components/MedianSessions";
 
 export default function Home() {
-	const {data, loading, error} = useFetchData<CheckUserData>({id: 2, type: "user"});
+	const {data, loading, error} = useFetchData<CheckUserData>({type: "user", url:"/user"});
 
 	if (loading) return (<div>Loading...</div>);
 	if (error) {
