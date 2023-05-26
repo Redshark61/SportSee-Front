@@ -1,2 +1,2 @@
 import KeyDatas from "./KeyDatas";
-export {KeyDatas}
+export default KeyDatas

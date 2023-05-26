@@ -1,8 +1,9 @@
 import {useFetchData} from "../../hooks";
 import {CheckUserData} from "../../utils";
 import Activities from "../../components/Activities";
-import {KeyDatas} from "../../components/KeyDatas";
-import {MedianSessions} from "../../components/MedianSessions";
+import KeyDatas from "../../components/KeyDatas";
+import MedianSessions from "../../components/MedianSessions";
+import Performance from "../../components/Performance";
 
 export default function Home() {
 	const {data, loading, error} = useFetchData<CheckUserData>({type: "user", url:"/user"});
@@ -26,7 +27,7 @@ export default function Home() {
 				</div>
 				<div className={"grid grid-cols-[repeat(3,_260px)] gap-4"}>
 					<MedianSessions/>
-					<div className={"border-2"}>7</div>
+					<Performance/>
 					<div className={"border-2"}>8</div>
 				</div>
 			</div>

@@ -1,10 +1,11 @@
-import {averageSessions, userActivities, user} from "../mocks";
+import {averageSessions, userActivities, user, performanceData} from "../mocks";
 import {useEffect, useState} from "react";
-import {CheckActivityData, CheckAverageSessionData, CheckUserData} from "../utils";
+import {CheckActivityData, CheckAverageSessionData, CheckPerformanceData, CheckUserData} from "../utils";
+
 
 interface ParamsType {
 	url: string;
-	type: "average-sessions" | "activities" | "user";
+	type: "average-sessions" | "activities" | "user" | "performance";
 }
 
 export function useFetchData<T>({url, type}: ParamsType) {
@@ -29,6 +30,10 @@ export function useFetchData<T>({url, type}: ParamsType) {
 		case "user":
 			mock = ()=>fetchMock(user);
 			Formatter = CheckUserData;
+			break;
+		case "performance":
+			mock = ()=>fetchMock(performanceData);
+			Formatter = CheckPerformanceData;
 			break;
 	}
 

@@ -1,2 +1,2 @@
 import MedianSessions from "./MedianSessions";
-export {MedianSessions};
+export default MedianSessions;
