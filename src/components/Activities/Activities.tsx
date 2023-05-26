@@ -1,11 +1,11 @@
 import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis,} from "recharts";
-import {UserActivity} from "../../types";
 import {useFetchData} from "../../hooks";
 import {BLACK, RED} from "../../constants";
 import {CustomTooltip} from "./CustomTooltip";
+import {CheckActivityData} from "../../utils";
 
 export default function Activities() {
-	const {data, loading, error} = useFetchData<UserActivity>({type: "activities", url: "/user/1/activity"});
+	const {data, loading, error} = useFetchData<CheckActivityData>({type: "activities", url: "/user/1/activity"});
 
 	if (loading) return (<div>Loading...</div>);
 	if (error) {
