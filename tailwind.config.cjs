@@ -9,7 +9,11 @@ module.exports = {
         secondary: "#FF0000",
       },
       margin: {
-        30: "30px",
+        30: "2vw",
+      },
+      fontSize: {
+        'lg': ["1.25vw", "2vw"],
+        '2xl': ["1.7vw", "2.2vw"]
       }
     },
   },

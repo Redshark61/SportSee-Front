@@ -6,10 +6,10 @@ import barbell from '../../assets/barbell.svg'
 
 export default function SideBar() {
 	return (
-		<aside className={"d-block h-full bg-primary min-w-[120px] flex flex-col justify-center items-center gap-[100px]"} style={{
-				minHeight: "calc(100vh - 90px)"
+		<aside className={"d-block h-full bg-primary min-w-[8.3vw] flex flex-col justify-center items-center gap-[7vw]"} style={{
+				minHeight: "calc(100vh - 6.25vw)"
 			}}>
-			<div className={"flex flex-col justify-center items-center gap-[20px]"}>
+			<div className={"flex flex-col justify-center items-center gap-[1.4vw]"}>
 				<Icon url={yoga} alt={"yoga"}/>
 				<Icon url={swim} alt={"swim"}/>
 				<Icon url={bicycle} alt={"bicycle"}/>

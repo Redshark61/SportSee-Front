@@ -8,7 +8,7 @@ interface Props {
 
 export default function Icon({url, alt=""}: Props) {
 	return (
-		<div className={"bg-white rounded-md w-[64px] h-[64px] flex justify-center items-center"}>
+		<div className={"bg-white rounded-md w-[4.4vw] h-[4.4vw] flex justify-center items-center"}>
 			<img src={url} alt={alt}/>
 		</div>
 	)

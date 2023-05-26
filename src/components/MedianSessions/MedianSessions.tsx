@@ -27,9 +27,9 @@ export default function MedianSessions() {
 						wrapperStyle={{opacity: .5}}
 
 					/>
-					<XAxis dataKey="day" fontSize={14} axisLine={false} tickLine={false} tick={{stroke: "rgba(255,255,255,.5)"}}
+					<XAxis dataKey="day" fontSize={".9vw"} axisLine={false} tickLine={false} tick={{stroke: "rgba(255,255,255,.5)"}}
 						   padding={{left: 10, right: 10}}/>
-					<YAxis fontSize={14} hide padding={{top: 30}} />
+					<YAxis fontSize={".9vw"} hide padding={{top: 30}} />
 					<Tooltip content={<CustomTooltip/>}/>
 					<Line dataKey={"sessionLength"} type={"monotone"} name={"Durée moyenne des sessions"} stroke="#FFF"
 						  strokeWidth={3} />

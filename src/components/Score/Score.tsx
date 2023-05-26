@@ -37,10 +37,10 @@ export default function Score() {
 					  barSize={30}
 					  >
 			<RadialBar dataKey={"todayScore"}/>
-			<text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="2rem" fill={"#282D30"}>
+			<text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="2.2vw" fill={"#282D30"}>
 				{data.todayScore}%
 			</text>
-			<text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" fontSize="1rem" fill={"#74798C"}>
+			<text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" fontSize="1.1vw" fill={"#74798C"}>
 				de votre objectif
 			</text>
 		</RadialBarChart>

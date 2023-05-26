@@ -17,16 +17,16 @@ export default function Home() {
 
 
 	return (
-		<div className={"pl-[100px] pr-[90px] py-[70px] pb-0 w-full"}>
-			<h1 className={"text-[48px]"}>Bonjour <span className={"text-secondary"}>{data.userInfos.firstName}</span>
+		<div className={"pl-[7vw] pr-[6.25vw] py-[4.9vw] pb-0 w-full"}>
+			<h1 className={"text-[3.3vw]"}>Bonjour <span className={"text-secondary"}>{data.userInfos.firstName}</span>
 			</h1>
-			<h2 className={"text-lg font-[400] mt-[40px]"}>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
-			<div className={"grid grid-rows-[320px_260px] grid-cols-[835px_260px] gap-[30px] w-full mt-[70px]"}>
+			<h2 className={"text-lg font-[400] mt-[2.8vw]"}>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
+			<div className={"grid grid-rows-[22.2vw_18vw] grid-cols-[58vw_18vw] gap-[2vw] w-full mt-[4.9vw]"}>
 				<Activities/>
 				<div className={"row-span-2 h-full grid grid-rows-4 gap-4"}>
 					<KeyDatas data={data.keyData}/>
 				</div>
-				<div className={"grid grid-cols-[repeat(3,_260px)] gap-4"}>
+				<div className={"grid grid-cols-[repeat(3,_18vw)] grid-rows-[18vw] gap-4"}>
 					<MedianSessions/>
 					<Performance/>
 					<Score/>
