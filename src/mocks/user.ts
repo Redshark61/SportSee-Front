@@ -5,7 +5,7 @@ export 	const user = {
 		lastName: "Doe",
 		age: 30
 	  },
-	  todayScore: 85,
+	  todayScore: .85,
 	  keyData: {
 		calorieCount: 2000,
 		proteinCount: 100,
