@@ -3,6 +3,7 @@ import {useFetchData} from "../../hooks";
 import {CheckActivityData, CheckUserData} from "../../utils";
 import {useEffect, useState} from "react";
 import {createFilter} from "vite";
+import {useParams} from "react-router-dom";
 
 interface TodayScore {
 	todayScore: number;
@@ -10,7 +11,8 @@ interface TodayScore {
 }
 
 export default function Score() {
-	const {data, loading, error} = useFetchData<CheckUserData>({type: "user", url: "/user/1/activity"});
+	const {user_id} = useParams<{user_id: string}>();
+	const {data, loading, error} = useFetchData<CheckUserData>({type: "user", url: `/user/${user_id}`});
 	const [todayScore, setTodayScore] = useState<TodayScore[]>([]);
 
 	useEffect(() => {

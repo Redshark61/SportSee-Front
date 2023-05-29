@@ -1,10 +1,12 @@
 import {useFetchData} from "../../hooks";
-import {Legend, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, ResponsiveContainer} from "recharts";
+import {PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, ResponsiveContainer} from "recharts";
 import {CheckPerformanceData} from "../../utils";
+import {useParams} from "react-router-dom";
 
 
 export default function Performance() {
-	const {data, error, loading} = useFetchData<CheckPerformanceData>({type:"performance", url:"/user/performance/1"})
+	const {user_id} = useParams<{ user_id: string }>()
+	const {data, error, loading} = useFetchData<CheckPerformanceData>({type:"performance", url:`/user/${user_id}/performance`})
 
 	if (loading) return <div>Loading...</div>
 	if (error) return <div>Error</div>

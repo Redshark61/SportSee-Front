@@ -5,6 +5,7 @@ import {CustomTooltip} from "./CustomTooltip";
 import {CheckActivityData} from "../../utils";
 import {Margin} from "recharts/types/util/types";
 import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 
 
 function calculate_margin() {
@@ -22,7 +23,8 @@ function calculate_dot_size(){
 }
 
 export default function Activities() {
-	const {data, loading, error} = useFetchData<CheckActivityData>({type: "activities", url: "/user/1/activity"});
+	const {user_id} = useParams<{user_id: string}>();
+	const {data, loading, error} = useFetchData<CheckActivityData>({type: "activities", url: `/user/${user_id}/activity`});
 	const [margin, setMargin] = useState<Margin>(calculate_margin());
 	const [dotSize, setDotSize] = useState<number>(calculate_dot_size());
 	useEffect(() => {

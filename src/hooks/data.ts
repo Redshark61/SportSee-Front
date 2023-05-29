@@ -12,7 +12,7 @@ export function useFetchData<T>({url, type}: ParamsType) {
 	const [data, setData] = useState<T>({} as T);
 	const [error, setError] = useState<any>('');
 	const [loading, setLoading] = useState<boolean>(true);
-	const isDebug = import.meta.env.VITE_DEBUG;
+	const isDebug = Boolean(+import.meta.env.VITE_DEBUG);
 
 	let mock: any;
 	const db = ()=>fetchDB<T>(url);
@@ -40,14 +40,18 @@ export function useFetchData<T>({url, type}: ParamsType) {
 	useEffect(() => {
 		(async () => {
 			try {
-				let fetchedData = {} as T;
+				let fetchedData = {} as T | { data: T }
 				setLoading(true);
 				if (isDebug) {
 					fetchedData = await mock();
 				} else {
 					fetchedData = await db();
 				}
-			setData(new Formatter(fetchedData));
+				if (!hasDataProperty<T>(fetchedData)){
+					setData(new Formatter(fetchedData));
+				} else {
+					setData(new Formatter(fetchedData.data));
+				}
 			} catch (error) {
 				setError(error);
 			} finally {
@@ -59,10 +63,16 @@ export function useFetchData<T>({url, type}: ParamsType) {
 	return {data, error, loading};
 }
 
+// Type guard to check if fetchedData is of type { data: T }
+function hasDataProperty<T>(obj: any): obj is { data: T } {
+  return 'data' in obj;
+}
+
 function fetchMock<T>(data: T): Promise<T>{
 	return new Promise(resolve => setTimeout(() => resolve(data), 1000));
 }
 
-function fetchDB<T>(url: string): Promise<T>{
+function fetchDB<T>(endpoint: string): Promise<{ data: T }>{
+	const url = `${import.meta.env.VITE_API_URL}${endpoint}`;
 	return fetch(url).then(response => response.json());
 }
