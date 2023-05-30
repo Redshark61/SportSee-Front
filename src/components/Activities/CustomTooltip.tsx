@@ -1,6 +1,7 @@
 import {TooltipProps} from "recharts";
 import {NameType, ValueType} from "recharts/types/component/DefaultTooltipContent";
 import {RED} from "../../constants";
+import PropTypes from "prop-types";
 
 export const CustomTooltip = ({payload, label, active}: TooltipProps<ValueType, NameType>) => {
 	if (active && payload && payload.length) {
@@ -12,4 +13,10 @@ export const CustomTooltip = ({payload, label, active}: TooltipProps<ValueType, 
 		);
 	}
 	return null;
+};
+
+CustomTooltip.propTypes = {
+	payload: PropTypes.arrayOf(PropTypes.object),
+	label: PropTypes.string,
+	active: PropTypes.bool
 };

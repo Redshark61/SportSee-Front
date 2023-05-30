@@ -17,20 +17,14 @@ function calculate_margin() {
 		bottom: 5 / 1440 * screenWidth
 	};
 }
-function calculate_dot_size(){
-	const screenWidth = window.innerWidth;
-	return 8 / 1440 * screenWidth;
-}
 
 export default function Activities() {
 	const {user_id} = useParams<{user_id: string}>();
 	const {data, loading, error} = useFetchData<CheckActivityData>({type: "activities", url: `/user/${user_id}/activity`});
 	const [margin, setMargin] = useState<Margin>(calculate_margin());
-	const [dotSize, setDotSize] = useState<number>(calculate_dot_size());
 	useEffect(() => {
 		window.removeEventListener("resize", ()=> {
 			setMargin(calculate_margin())
-			setDotSize(calculate_dot_size())
 		});
 	}, []);
 
@@ -42,7 +36,6 @@ export default function Activities() {
 
 	window.addEventListener("resize", ()=> {
 		setMargin(calculate_margin())
-		setDotSize(calculate_dot_size())
 	});
 
 	return (

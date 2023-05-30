@@ -1,8 +1,7 @@
 import {ResponsiveContainer, RadialBarChart, RadialBar} from "recharts";
 import {useFetchData} from "../../hooks";
-import {CheckActivityData, CheckUserData} from "../../utils";
+import {CheckUserData} from "../../utils";
 import {useEffect, useState} from "react";
-import {createFilter} from "vite";
 import {useParams} from "react-router-dom";
 
 interface TodayScore {

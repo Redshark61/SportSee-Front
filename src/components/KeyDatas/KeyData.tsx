@@ -30,4 +30,5 @@ KeyData.propTypes = {
 	img: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	value: PropTypes.string.isRequired,
+	color: PropTypes.string.isRequired
 }
