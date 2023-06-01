@@ -18,7 +18,6 @@ export class CheckUserData {
 	constructor({id, userInfos, todayScore, keyData}: UserMainData) {
 		this.id = id;
 		this.userInfos = userInfos;
-		console.log(todayScore);
 		this.todayScore = todayScore*100;
 		this.keyData = {
 			calorieCount: `${(keyData.calorieCount/1000).toFixed(3)}kCal`,
