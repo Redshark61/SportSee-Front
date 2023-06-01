@@ -6,12 +6,13 @@ import MedianSessions from "../../components/MedianSessions";
 import Performance from "../../components/Performance";
 import Score from "../../components/Score";
 import {useParams} from "react-router-dom";
+import Loader from "../../components/Loader";
 
 export default function Home() {
 	const {user_id} = useParams<{user_id: string}>();
 	const {data, loading, error} = useFetchData<CheckUserData>({type: "user", url:`/user/${user_id}`});
 
-	if (loading) return (<div>Loading...</div>);
+	if (loading) return (<Loader/>);
 	if (error) {
 		console.error(error);
 		return (<div>Error</div>);

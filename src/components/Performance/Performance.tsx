@@ -2,14 +2,18 @@ import {useFetchData} from "../../hooks";
 import {PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, ResponsiveContainer} from "recharts";
 import {CheckPerformanceData} from "../../utils";
 import {useParams} from "react-router-dom";
+import Loader from "../Loader";
 
 
 export default function Performance() {
 	const {user_id} = useParams<{ user_id: string }>()
 	const {data, error, loading} = useFetchData<CheckPerformanceData>({type:"performance", url:`/user/${user_id}/performance`})
 
-	if (loading) return <div>Loading...</div>
-	if (error) return <div>Error</div>
+	if (loading) return <Loader/>
+	if (error) {
+		console.error(error)
+		return <div>Error</div>
+	}
 
 	return <div className={"rounded-md"} style={{
 		background: "#282D30",

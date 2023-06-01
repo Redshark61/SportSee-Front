@@ -3,6 +3,7 @@ import {useFetchData} from "../../hooks";
 import {CheckUserData} from "../../utils";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import Loader from "../Loader";
 
 interface TodayScore {
 	todayScore: number;
@@ -20,7 +21,7 @@ export default function Score() {
 			{todayScore: 100, fill:"#FBFBFB"}])
 	}, [data]);
 
-	if (loading) return (<div>Loading...</div>);
+	if (loading) return (<Loader/>);
 	if (error) {
 		console.error(error);
 		return (<div>Error</div>);

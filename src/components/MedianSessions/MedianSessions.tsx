@@ -3,12 +3,13 @@ import {UserAverageSessions} from "../../types";
 import {Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import {CustomTooltip} from "./CustomTooltip";
 import {useParams} from "react-router-dom";
+import Loader from "../Loader";
 
 export default function MedianSessions() {
 	const {user_id} = useParams<{user_id: string}>();
 	const {data, loading, error} = useFetchData<UserAverageSessions>({type: "average-sessions", url:`/user/${user_id}/average-sessions`});
 
-	if (loading) return (<div>Loading...</div>);
+	if (loading) return (<Loader/>);
 	if (error) {
 		console.error(error);
 		return (<div>Error</div>);
