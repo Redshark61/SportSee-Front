@@ -19,18 +19,9 @@ export default function KeyDatas({data}: { data: CheckUserData["keyData"] }) {
 
 KeyDatas.propTypes = {
 	data: PropTypes.shape({
-		id: PropTypes.number.isRequired,
-		userInfos: PropTypes.shape({
-			firstName: PropTypes.string.isRequired,
-			lastName: PropTypes.string.isRequired,
-			age: PropTypes.number.isRequired,
+			calorieCount: PropTypes.string.isRequired,
+			proteinCount: PropTypes.string.isRequired,
+			carbohydrateCount: PropTypes.string.isRequired,
+			lipidCount: PropTypes.string.isRequired,
 		}).isRequired,
-		todayScore: PropTypes.number.isRequired,
-		keyData: PropTypes.shape({
-			calorieCount: PropTypes.number.isRequired,
-			proteinCount: PropTypes.number.isRequired,
-			carbohydrateCount: PropTypes.number.isRequired,
-			lipidCount: PropTypes.number.isRequired,
-		}).isRequired,
-	}).isRequired
 }
