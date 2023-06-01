@@ -65,7 +65,7 @@ export function useFetchData<T>({url, type}: ParamsType) {
 
 // Type guard to check if fetchedData is of type { data: T }
 function hasDataProperty<T>(obj: any): obj is { data: T } {
-  return 'data' in obj;
+  return 'data' in obj && Object.keys(obj).length === 1;
 }
 
 function fetchMock<T>(data: T): Promise<T>{
