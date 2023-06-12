@@ -1,5 +1,11 @@
 import {UserMainData} from "../types";
 
+/**
+ * @description Class to format user data. It formats the score to a percentage as
+ * well as formatting the key data as a string.
+ * @class CheckUserData
+ * @param {UserMainData} data - User data.
+ */
 export class CheckUserData {
 	id: number;
 	userInfos: {

@@ -1,5 +1,11 @@
 import {UserAverageSessions} from "../types";
 
+/**
+ * @description Class to format user average session data. It converts the day
+ * from a number to a letter. If the day is not between 1 and 7, it will be set to "X".
+ * @class CheckAverageSessionData
+ * @param {UserAverageSessions} data - User average session data.
+ */
 export class CheckAverageSessionData {
 	userId: number;
 	sessions: {

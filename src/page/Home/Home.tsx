@@ -8,8 +8,14 @@ import Score from "../../components/Score";
 import {useParams} from "react-router-dom";
 import Loader from "../../components/Loader";
 
+/**
+ * @constructor {JSX.Element}
+ * @description Home page, display all the components
+ */
 export default function Home() {
+	// Getting user_id from url
 	const {user_id} = useParams<{user_id: string}>();
+	// Fetching data from API
 	const {data, loading, error} = useFetchData<CheckUserData>({type: "user", url:`/user/${user_id}`});
 
 	if (loading) return (<Loader/>);

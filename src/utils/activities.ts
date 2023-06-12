@@ -1,5 +1,11 @@
 import {UserActivity} from "../types";
 
+/**
+ * @description Class to format user activity data. It keeps only the day by formatting
+ * from "2020-12-31" to a string like "31".
+ * @class CheckActivityData
+ * @param {UserActivity} data - User activity data.
+ */
 export class CheckActivityData {
 	userId: number;
 	sessions: {

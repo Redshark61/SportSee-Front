@@ -16,6 +16,8 @@ export default function Score() {
 	const [todayScore, setTodayScore] = useState<TodayScore[]>([]);
 
 	useEffect(() => {
+		// Need to be in a useEffect, and set to a state because todayScore need to have a
+		// reference value in order to draw the circle.
 		setTodayScore([
 			{todayScore: data.todayScore, fill:"#F00"},
 			{todayScore: 100, fill:"#FBFBFB"}])

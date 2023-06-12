@@ -7,6 +7,9 @@ You must set two environment variables in a `.env` file at the root of the proje
 - `VITE_API_URL` : the url of the API
 - `VITE_DEBUG` : `0` or `1` to enable or disable debug mode
 
+## Starting
+Since the project needs a user id to work, you must go to the url with the id at the end. For example `http://localhost:5173/12` to display the dashboard for the user with the id `12`.
+
 
 ## Using new endpoint
 

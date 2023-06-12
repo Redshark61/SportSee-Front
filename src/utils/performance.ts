@@ -1,5 +1,11 @@
 import {UserPerformanceData} from "../types";
 
+/**
+ * @description Class to format user performance data. It converts the kind of
+ * performance from a lower string to a capitalized string.
+ * @class CheckPerformanceData
+ * @param {UserPerformanceData} data - User performance data.
+ */
 export class CheckPerformanceData {
 	userId: number;
 	kind: {

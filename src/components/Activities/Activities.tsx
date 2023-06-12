@@ -11,6 +11,7 @@ import Loader from "../Loader";
 
 function calculate_margin() {
 	const screenWidth = window.innerWidth;
+	// Those numbers are set according to the width of the screen on the design.
 	return {
 		top: 64 / 1440 * screenWidth,
 		right: 30 / 1440 * screenWidth,
@@ -23,11 +24,6 @@ export default function Activities() {
 	const {user_id} = useParams<{user_id: string}>();
 	const {data, loading, error} = useFetchData<CheckActivityData>({type: "activities", url: `/user/${user_id}/activity`});
 	const [margin, setMargin] = useState<Margin>(calculate_margin());
-	useEffect(() => {
-		window.removeEventListener("resize", ()=> {
-			setMargin(calculate_margin())
-		});
-	}, []);
 
 	if (loading) return (<Loader/>);
 	if (error) {
@@ -35,6 +31,14 @@ export default function Activities() {
 		return (<div>Error</div>);
 	}
 
+	useEffect(() => {
+		// Remove the event listener when the component is unmounted.
+		window.removeEventListener("resize", ()=> {
+			setMargin(calculate_margin())
+		});
+	}, []);
+
+	// Add a listener to the window to update the margin of the chart when the window is resized.
 	window.addEventListener("resize", ()=> {
 		setMargin(calculate_margin())
 	});
